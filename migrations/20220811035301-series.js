@@ -15,7 +15,7 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.createTable("chassis",{
+  return db.createTable("series",{
     id: {
       type: "int",
       primaryKey:true,
@@ -29,16 +29,12 @@ exports.up = function(db) {
     description: {
       type:"text",
       notNull:false
-    },
-    image: {
-      type: "string",
-      notNull: false
     }
   })
 };
 
 exports.down = function(db) {
-  return db.dropTable("chassis");
+  return db.dropTable("series")
 };
 
 exports._meta = {

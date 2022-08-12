@@ -24,24 +24,36 @@ exports.up = function (db) {
     },
     name: {
       type: "string",
-      length: 125,
       notNull: false
     },
     width: {
-      type: "int",
-      length: 4,
-      notNull: false
+      type: "smallint",
+      notNull: false,
+      unsigned: true
     },
     length: {
-      type: "int",
-      length: 4,
-      notNull: false
+      type: "smallint",
+      notNull: false,
+      unsigned: true
     },
     height: {
-      type: "int",
-      length: 4,
-      notNull: false
+      type: "smallint",
+      notNull: false,
+      unsigned: true
     },
+    price: {
+      type: "decimal",
+      notNull: false,
+      unsigned: true
+    },
+    image: {
+      type: "string",
+      notNull: false,
+    },
+    description: {
+      type: "text",
+      notNull: false
+    }
   })
 };
 
