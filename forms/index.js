@@ -1,5 +1,6 @@
 const forms = require("forms");
 const fields = forms.fields;
+const widgets = forms.widgets;
 const validators = forms.validators;
 
 var bootstrapField = function (name, object) {
@@ -22,18 +23,52 @@ var bootstrapField = function (name, object) {
     return '<div class="form-group">' + label + widget + error + '</div>';
 };
 
-const createProductForm = () => {
+const createModelKitForm = () => {
     return forms.create({
         'name': fields.string({
             required: true,
             errorAfterField: true,
+            widget: widgets.text(),
             cssClasses: {
                 label: ['form-label']
             }
         }),
-        'cost': fields.string({
+        'width': fields.string({
             required: true,
             errorAfterField: true,
+            widget: widgets.text(),
+            cssClasses: {
+                label: ['form-label']
+            }
+        }),
+        'length': fields.string({
+            required: true,
+            errorAfterField: true,
+            widget: widgets.text(),
+            cssClasses: {
+                label: ['form-label']
+            }
+        }),
+        'height': fields.string({
+            required: true,
+            errorAfterField: true,
+            widget: widgets.text(),
+            cssClasses: {
+                label: ['form-label']
+            }
+        }),
+        'price': fields.string({
+            required: true,
+            errorAfterField: true,
+            widget: widgets.text(),
+            cssClasses: {
+                label: ['form-label']
+            }
+        }),
+        'image': fields.string({
+            required: true,
+            errorAfterField: true,
+            widget: widgets.text(),
             cssClasses: {
                 label: ['form-label']
             }
@@ -41,6 +76,7 @@ const createProductForm = () => {
         'description': fields.string({
             required: true,
             errorAfterField: true,
+            widget: widgets.textarea(),
             cssClasses: {
                 label: ['form-label']
             }
@@ -48,4 +84,4 @@ const createProductForm = () => {
     })
 };
 
-module.exports = { createProductForm, bootstrapField };
+module.exports = { createModelKitForm, bootstrapField };

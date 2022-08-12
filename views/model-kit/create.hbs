@@ -1,0 +1,17 @@
+{{#extends 'base'}}
+
+{{#block "title"}}
+Create New
+{{/block}}
+
+{{#block 'content'}}
+<div class="container">
+    <h1>Create New Product</h1>
+    <form method="POST">
+        {{{form}}}
+        <input type="submit" value="Add Product" class="btn btn-primary" />
+    </form>
+</div>
+{{/block}}
+
+{{/extends}}
