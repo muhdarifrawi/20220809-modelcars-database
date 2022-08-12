@@ -15,23 +15,24 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.createTable("cart_item",{
-    id: {
-      type: "int",
-      primaryKey:true,
-      autoIncrement:true,
-      unsigned:true
-    },
-    quantity:{
-      type:"smallint",
-      notNull:false,
-      unsigned: true
+  return db.addColumn("cart_item", "model_kit_listing_id", {
+    type: "int",
+    unsigned: true,
+    notNull: true,
+    foreignKey: {
+      name: "cart_item_model_kit_listing_fk",
+      table: "model_kit_listing",
+      rules: {
+        onDelete: "cascade",
+        onUpdate: "restrict"
+      },
+      mapping: "id"
     }
-  });
+  })
 };
 
 exports.down = function(db) {
-  return db.dropTable("cart_item");
+  return db.dropColumn("cart_item");
 };
 
 exports._meta = {
