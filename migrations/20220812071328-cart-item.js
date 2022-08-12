@@ -15,11 +15,22 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return null;
+  return db.createTable("cart_item",{
+    id: {
+      type: "int",
+      primaryKey:true,
+      autoIncrement:true,
+      unsigned:true
+    },
+    quantity:{
+      type:"smallint",
+      notNull:false
+    }
+  });
 };
 
 exports.down = function(db) {
-  return null;
+  return db.dropTable("cart_item");
 };
 
 exports._meta = {
