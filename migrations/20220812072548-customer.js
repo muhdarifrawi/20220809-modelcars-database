@@ -15,30 +15,50 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db) {
-  return db.createTable("chassis", {
+  return db.createTable("customer", {
     id: {
       type: "int",
       primaryKey: true,
       autoIncrement: true,
       unsigned: true
     },
-    name: {
+    username: {
       type: "string",
+      notNull: true
+    },
+    first_name: {
+      type: "string",
+      notNull: false
+    },
+    last_name: {
+      type: "string",
+      notNull: false
+    },
+    date_of_birth: {
+      type: "date",
       notNull: false
     },
     description: {
       type: "text",
       notNull: false
     },
-    image: {
-      type: "string",
+    address: {
+      type: "text",
       notNull: false
+    },
+    email: {
+      type: "string",
+      notNull: true
+    },
+    password: {
+      type: "string",
+      notNull: true
     }
   })
 };
 
 exports.down = function (db) {
-  return db.dropTable("chassis");
+  return db.dropTable("customer");
 };
 
 exports._meta = {
