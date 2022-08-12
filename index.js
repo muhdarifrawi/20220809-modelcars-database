@@ -25,9 +25,11 @@ app.use(
 
 // import routes
 const landingRoutes = require('./routes/landing');
+const modelKitRoutes = require('./routes/model-kit')
 
 async function main() {
     app.use("/", landingRoutes)
+    app.use('/model-kit', modelKitRoutes);
 }
 
 main();
