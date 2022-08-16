@@ -15,24 +15,30 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db) {
-  return db.addColumn("model_kit", "model_kit_listing_id", {
-    type: "int",
-    unsigned: true,
-    notNull: true,
-    foreignKey: {
-      name: "model_kit_model_kit_listing_fk",
-      table: "model_kit_listing",
-      rules: {
-        onDelete: "cascade",
-        onUpdate: "restrict"
-      },
-      mapping: "id"
+  return db.createTable("chassis", {
+    id: {
+      type: "int",
+      primaryKey: true,
+      autoIncrement: true,
+      unsigned: true
+    },
+    chassis_name: {
+      type: "string",
+      notNull: false
+    },
+    chassis_description: {
+      type: "text",
+      notNull: false
+    },
+    chassis_image: {
+      type: "string",
+      notNull: false
     }
   })
 };
 
 exports.down = function (db) {
-  return db.removeColumn("model_kit");
+  return db.dropTable("chassis")
 };
 
 exports._meta = {

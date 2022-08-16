@@ -66,7 +66,7 @@ const createModelKitForm = () => {
             }
         }),
         'image': fields.string({
-            required: true,
+            required: false,
             errorAfterField: true,
             widget: widgets.text(),
             cssClasses: {

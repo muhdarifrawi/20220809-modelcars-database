@@ -22,35 +22,35 @@ exports.up = function (db) {
       autoIncrement: true,
       unsigned: true
     },
-    name: {
+    model_kit_name: {
       type: "string",
       notNull: false
     },
-    width: {
+    model_kit_width: {
       type: "smallint",
       notNull: false,
       unsigned: true
     },
-    length: {
+    model_kit_length: {
       type: "smallint",
       notNull: false,
       unsigned: true
     },
-    height: {
+    model_kit_height: {
       type: "smallint",
       notNull: false,
       unsigned: true
     },
-    price: {
+    model_kit_price: {
       type: "decimal",
       notNull: false,
       unsigned: true
     },
-    image: {
+    model_kit_image: {
       type: "string",
-      notNull: false,
+      notNull: false
     },
-    description: {
+    model_kit_description: {
       type: "text",
       notNull: false
     }
