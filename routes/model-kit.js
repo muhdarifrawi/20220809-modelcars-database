@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { ModelKit } = require('../models')
+const { ModelKit, Chassis, Series } = require('../models')
 const { createModelKitForm, bootstrapField } = require("../forms")
 
 router.get('/', async (req, res) => {
@@ -12,14 +12,30 @@ router.get('/', async (req, res) => {
 })
 
 router.get("/create", async (req, res) => {
-    const modelKitForm = createModelKitForm();
-    res.render('model-kit/create',{
+    const allChassis = await Chassis.fetchAll().map((chassis) => {
+        return [chassis.get('id'), chassis.get('chassis_name')];
+    })
+
+    const allSeries = await Series.fetchAll().map((series) => {
+        return [series.get('id'), series.get('series_name')];
+    })
+
+    const modelKitForm = createModelKitForm(allChassis, allSeries);
+    res.render('model-kit/create', {
         'form': modelKitForm.toHTML(bootstrapField)
     })
 })
 
-router.post('/create', async(req,res)=>{
-    const modelKitForm = createModelKitForm();
+router.post('/create', async (req, res) => {
+    const allChassis = await Chassis.fetchAll().map((chassis) => {
+        return [chassis.get('id'), chassis.get('name')];
+    })
+
+    const allSeries = await Series.fetchAll().map((series) => {
+        return [series.get('id'), series.get('name')];
+    })
+
+    const modelKitForm = createModelKitForm(allChassis, allSeries);
     modelKitForm.handle(req, {
         'success': async (form) => {
             const modelKit = new ModelKit();

@@ -23,7 +23,7 @@ var bootstrapField = function (name, object) {
     return '<div class="form-group">' + label + widget + error + '</div>';
 };
 
-const createModelKitForm = () => {
+const createModelKitForm = (chassis, series) => {
     return forms.create({
         'name': fields.string({
             required: true,
@@ -81,6 +81,28 @@ const createModelKitForm = () => {
                 label: ['form-label']
             }
         }),
+        'chassis_id': fields.string({
+            label: 'Chassis',
+            required: true,
+            errorAfterField: true,
+            cssClasses: {
+                label: ['form-label']
+            },
+            widget: widgets.select(),
+            choices: chassis
+        }),
+        'series_id': fields.string({
+            label:'Series',
+            required: true,
+            errorAfterField: true,
+            cssClasses: {
+                label: ['form-label']
+            },
+            widget: widgets.select(),
+            choices: series
+        })
+
+
     })
 };
 
