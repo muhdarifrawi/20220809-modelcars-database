@@ -15,24 +15,24 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db) {
-  return db.createTable("stock", {
-    id: {
-      type: "int",
-      primaryKey: true,
-      autoIncrement: true,
-      unsigned: true
-    },
-    stock_quantity:{
-      type: "int",
-      unsigned:true,
-      notNull: false,
-      defaultValue:0
+  return db.addColumn('model_kit', 'series_id', {
+    type: 'int',
+    unsigned: true,
+    notNull: true,
+    foreignKey: {
+      name: 'model_kit_series_fk',
+      table: 'series',
+      rules: {
+        onDelete: 'cascade',
+        onUpdate: 'restrict'
+      },
+      mapping: 'id'
     }
   })
 };
 
 exports.down = function (db) {
-  return db.dropTable("stock");
+  return null;
 };
 
 exports._meta = {
