@@ -38,14 +38,7 @@ router.post('/create', async (req, res) => {
     const modelKitForm = createModelKitForm(allChassis, allSeries);
     modelKitForm.handle(req, {
         'success': async (form) => {
-            const modelKit = new ModelKit();
-            modelKit.set('name', form.data.name);
-            modelKit.set('price', form.data.price);
-            modelKit.set('width', form.data.width);
-            modelKit.set('length', form.data.length);
-            modelKit.set('height', form.data.height);
-            modelKit.set('image', form.data.image);
-            modelKit.set('description', form.data.description);
+            const modelKit = new ModelKit(form.data);
             await modelKit.save();
             res.redirect('/products');
 
