@@ -40,7 +40,7 @@ router.post('/create', async (req, res) => {
         'success': async (form) => {
             const modelKit = new ModelKit(form.data);
             await modelKit.save();
-            res.redirect('/products');
+            res.redirect('/model-kit');
 
         },
         "error": async (form) => {

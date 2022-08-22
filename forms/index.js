@@ -25,7 +25,7 @@ var bootstrapField = function (name, object) {
 
 const createModelKitForm = (chassis, series) => {
     return forms.create({
-        'name': fields.string({
+        'model_kit_name': fields.string({
             required: true,
             errorAfterField: true,
             widget: widgets.text(),
@@ -33,7 +33,7 @@ const createModelKitForm = (chassis, series) => {
                 label: ['form-label']
             }
         }),
-        'width': fields.string({
+        'model_kit_width': fields.string({
             required: true,
             errorAfterField: true,
             widget: widgets.text(),
@@ -41,7 +41,7 @@ const createModelKitForm = (chassis, series) => {
                 label: ['form-label']
             }
         }),
-        'length': fields.string({
+        'model_kit_length': fields.string({
             required: true,
             errorAfterField: true,
             widget: widgets.text(),
@@ -49,7 +49,7 @@ const createModelKitForm = (chassis, series) => {
                 label: ['form-label']
             }
         }),
-        'height': fields.string({
+        'model_kit_height': fields.string({
             required: true,
             errorAfterField: true,
             widget: widgets.text(),
@@ -57,7 +57,7 @@ const createModelKitForm = (chassis, series) => {
                 label: ['form-label']
             }
         }),
-        'price': fields.string({
+        'model_kit_price': fields.string({
             required: true,
             errorAfterField: true,
             widget: widgets.text(),
@@ -65,7 +65,7 @@ const createModelKitForm = (chassis, series) => {
                 label: ['form-label']
             }
         }),
-        'image': fields.string({
+        'model_kit_image': fields.string({
             required: false,
             errorAfterField: true,
             widget: widgets.text(),
@@ -73,7 +73,7 @@ const createModelKitForm = (chassis, series) => {
                 label: ['form-label']
             }
         }),
-        'description': fields.string({
+        'model_kit_description': fields.string({
             required: true,
             errorAfterField: true,
             widget: widgets.textarea(),
@@ -100,6 +100,11 @@ const createModelKitForm = (chassis, series) => {
             },
             widget: widgets.select(),
             choices: series
+        }),
+        'admin_id': fields.string({
+            required: true,
+            widget: widgets.hidden(),
+            value: 1
         })
 
 
