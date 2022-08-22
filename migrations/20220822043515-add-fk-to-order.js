@@ -15,24 +15,34 @@ exports.setup = function (options, seedLink) {
 };
 
 exports.up = function (db) {
-  return db.addForeignKey("order", "customer", "order_customer_fk",
-    {
-      "id": "id"
-    },
-    {
-      onDelete: "CASCADE",
-      onUpdate: "RESTRICT"
-    }
-  ).then(
-    db.addForeignKey("order", "order_item", "order_order_item_fk",
-      {
-        "id": "id"
+  return db.addColumn("customer", "order_id", {
+    type: 'int',
+    unsigned: true,
+    notNull: true,
+    foreignKey: {
+      name: 'customer_order_fk',
+      table: 'order',
+      rules: {
+        onDelete: 'cascade',
+        onUpdate: 'restrict'
       },
-      {
-        onDelete: "CASCADE",
-        onUpdate: "RESTRICT"
+      mapping: 'id'
+    }
+  }).then(
+    db.addColumn("order_item", "order_id", {
+      type: 'int',
+      unsigned: true,
+      notNull: true,
+      foreignKey: {
+        name: 'order_item_order_fk',
+        table: 'order',
+        rules: {
+          onDelete: 'cascade',
+          onUpdate: 'restrict'
+        },
+        mapping: 'id'
       }
-    )
+    })
   )
 };
 
