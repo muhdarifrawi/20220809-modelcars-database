@@ -101,11 +101,11 @@ const createModelKitForm = (chassis, series) => {
             widget: widgets.select(),
             choices: series
         }),
-        'admin_id': fields.string({
-            required: true,
-            widget: widgets.hidden(),
-            value: 1
-        })
+        // 'admin_id': fields.string({
+        //     required: true,
+        //     widget: widgets.hidden(),
+        //     value: 1
+        // })
 
 
     })

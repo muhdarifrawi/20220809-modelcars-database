@@ -1,29 +1,31 @@
 {{#extends 'base'}}
 
 {{#block 'content'}}
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <td>Chassis</td>
-            <td>Series</td>
-            <td>Quantity</td>
-        </tr>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <td>Chassis</td>
+                <td>Series</td>
+                <td>Quantity</td>
+                <td></td>
+            </tr>
 
-    </thead>
-    <tbody>
-        <tr>
-            {{!-- 
-                model_kit is pulled from 
-                routes/model-kit.js, which
-                pulls from models/index.js 
+        </thead>
+        <tbody>
+            {{!--
+            model_kit is pulled from
+            routes/model-kit.js, which
+            pulls from models/index.js
             --}}
             {{#each model_kit}}
-                {{!-- 
-                    model_kit_<something> are the
-                    names given to the table columns
+            <tr>
+                {{!--
+                model_kit_<something> are the
+                names given to the table columns
                 --}}
                 <td>{{this.id}}</td>
                 <td>{{this.model_kit_name}}</td>
@@ -32,15 +34,71 @@
                 <td>{{this.series.series_name}}</td>
                 <td>
                     {{#if this.model_kit_quantity}}
-                        {{this.model_kit_quantity}}
+                    {{this.model_kit_quantity}}
                     {{else}}
-                        0
+                    0
                     {{/if}}
                 </td>
+                <td>
+                    <a href="" class="link-primary" data-bs-toggle="modal" 
+                    data-bs-target="#modelInfo-{{this.id}}">
+                        More...
+                    </a>
+                </td>
+                {{!-- modal for modelInfo --}}
+                <div class="modal fade" id="modelInfo-{{this.id}}" tabindex="-1" 
+                aria-labelledby="modelInfolLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" 
+                                id="modelInfolLabel">
+                                {{this.model_kit_name}},
+                                {{this.series.series_name}},
+                                {{this.chassis.chassis_name}}
+                                </h5>
+                                <button type="button" class="btn-close" 
+                                data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex align-items-center">
+                                <img src="/images/image.png" 
+                                    class="thumbnail-size" 
+                                    alt="">
+                                <div class="mx-3">
+                                    <p>Price: ${{this.model_kit_price}}</p>
+                                    <p>Quantity in stock: 
+                                        {{this.model_kit_quantity}}</p>
+                                    <p>Width: {{this.model_kit_width}}</p>
+                                    <p>Length: {{this.model_kit_length}}</p>
+                                    <p>Height: {{this.model_kit_height}}</p>
+                                    <p>Description: 
+                                        {{this.model_kit_description}}</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" 
+                                class="btn btn-secondary" 
+                                data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" 
+                                class="btn btn-primary">
+                                    Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tr>
             {{/each}}
-        </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
+
+
 {{/block}}
 
 {{/extends}}
