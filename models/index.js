@@ -8,14 +8,11 @@ const ModelKit = bookshelf.model("model_kit", {
     series() {
         return this.belongsTo("Series")
     },
-    stock() {
-        return this.belongsTo("Stock")
-    },
-    admin() {
-        return this.belongsTo("Admin")
-    },
     cart_item() {
         return this.hasMany("CartItem")
+    },
+    order_item() {
+        return this.hasMany("OrderItem")
     }
 });
 
@@ -33,27 +30,27 @@ const Series = bookshelf.model("series", {
     }
 })
 
-const Stock = bookshelf.model("stock", {
-    tableName: "stock",
-    model_kit() {
-        return this.hasMany("ModelKit")
-    }
-})
-
 const Admin = bookshelf.model("admin", {
-    tableName: "admin",
-    model_kit() {
-        return this.hasMany("ModelKit")
-    },
-    order() {
-        return this.hasMany("Order")
-    }
+    tableName: "admin"
 })
 
 const Order = bookshelf.model("order", {
     tableName: "order",
-    admin() {
-        return this.belongsTo("Admin")
+    order_item() {
+        return this.hasMany("OrderItem")
+    },
+    customer() {
+        return this.hasMany("Customer")
+    }
+})
+
+const OrderItem = bookshelf.model("order_item", {
+    tableName: "order_item",
+    order() {
+        return this.belongsTo("Order")
+    },
+    model_kit() {
+        return this.belongsTo("ModelKit")
     }
 })
 
@@ -69,12 +66,15 @@ const CartItem = bookshelf.model("cart_item", {
 
 const Customer = bookshelf.model("customer", {
     tableName: "customer",
+    order() {
+        return this.belongsTo("Customer")
+    },
     cart_item() {
         return this.hasMany("CartItem")
     }
 })
 
-module.exports = { 
-                    ModelKit, Chassis, Series, Stock, 
-                    Admin, Order, CartItem, Customer 
-                };
+module.exports = {
+    ModelKit, Chassis, Series,
+    Admin, Order, CartItem, Customer
+};
