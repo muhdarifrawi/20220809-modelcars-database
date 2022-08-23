@@ -40,20 +40,20 @@
                     {{/if}}
                 </td>
                 <td>
-                    <a href="" class="link-primary" data-bs-toggle="modal" 
+                    <a role="button" class="link-primary" data-bs-toggle="modal" 
                     data-bs-target="#modelInfo-{{this.id}}">
                         More...
                     </a>
                 </td>
                 {{!-- modal for modelInfo --}}
                 <div class="modal fade" id="modelInfo-{{this.id}}" tabindex="-1" 
-                aria-labelledby="modelInfolLabel"
+                aria-labelledby="modelInfolLabel-{{this.id}}"
                     aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" 
-                                id="modelInfolLabel">
+                                id="modelInfolLabel-{{this.id}}">
                                 {{this.model_kit_name}},
                                 {{this.series.series_name}},
                                 {{this.chassis.chassis_name}}
@@ -78,16 +78,58 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" 
-                                class="btn btn-secondary" 
-                                data-bs-dismiss="modal">
-                                    Close
+                                <button class="btn btn-danger" 
+                                data-bs-target="#deleteModal-{{this.id}}" 
+                                data-bs-toggle="modal">
+                                    Delete
                                 </button>
                                 <button type="button" 
-                                class="btn btn-primary">
-                                    Save changes
+                                class="btn btn-warning" 
+                                data-bs-dismiss="modal">
+                                    Edit
+                                </button>
+                                <button type="button" 
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                                    Cancel
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- modal for deleting --}}
+                <div class="modal fade" id="deleteModal-{{this.id}}" 
+                aria-hidden="true" 
+                aria-labelledby="deleteModal-label-{{this.id}}" 
+                tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" 
+                            id="deleteModal-label-{{this.id}}">
+                                Confirm Deletion
+                            </h5>
+                            <button type="button" class="btn-close" 
+                            data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Once deleted, the data cannot be retrieved. 
+                            Are you sure to delete this entry?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" 
+                                class="btn btn-danger" 
+                                data-bs-dismiss="modal">
+                                    Yes
+                                </button>
+                                <button type="button" 
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                                    No
+                                </button>
+                        </div>
                         </div>
                     </div>
                 </div>
