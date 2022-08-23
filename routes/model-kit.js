@@ -5,7 +5,16 @@ const { ModelKit, Chassis, Series } = require('../models')
 const { createModelKitForm, bootstrapField } = require("../forms")
 
 router.get('/', async (req, res) => {
-    let model_kit = await ModelKit.collection().fetch();
+    let model_kit = await ModelKit.collection()
+                                    .fetch({
+                                        withRelated: [
+                                            "chassis",
+                                            "series"
+                                        ]
+                                    });
+    console.log("test")
+    console.log(model_kit.toJSON())
+    
     res.render('model-kit/index', {
         "model_kit": model_kit.toJSON()
     })

@@ -7,17 +7,36 @@
             <th>ID</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Description</th>
+            <td>Chassis</td>
+            <td>Series</td>
+            <td>Quantity</td>
         </tr>
 
     </thead>
     <tbody>
         <tr>
+            {{!-- 
+                model_kit is pulled from 
+                routes/model-kit.js, which
+                pulls from models/index.js 
+            --}}
             {{#each model_kit}}
+                {{!-- 
+                    model_kit_<something> are the
+                    names given to the table columns
+                --}}
                 <td>{{this.id}}</td>
-                <td>{{this.model_kit}}</td>
-                <td>{{this.price}}</td>
-                <td>{{this.description}}</td>
+                <td>{{this.model_kit_name}}</td>
+                <td>{{this.model_kit_price}}</td>
+                <td>{{this.chassis.chassis_name}}</td>
+                <td>{{this.series.series_name}}</td>
+                <td>
+                    {{#if this.model_kit_quantity}}
+                        {{this.model_kit_quantity}}
+                    {{else}}
+                        0
+                    {{/if}}
+                </td>
             {{/each}}
         </tr>
     </tbody>

@@ -3,10 +3,10 @@ const bookshelf = require('../bookshelf')
 const ModelKit = bookshelf.model("model_kit", {
     tableName: 'model_kit',
     chassis() {
-        return this.belongsTo("Chassis")
+        return this.belongsTo(Chassis)
     },
     series() {
-        return this.belongsTo("Series")
+        return this.belongsTo(Series)
     },
     cart_item() {
         return this.hasMany("CartItem")
@@ -75,6 +75,6 @@ const Customer = bookshelf.model("customer", {
 })
 
 module.exports = {
-    ModelKit, Chassis, Series,
-    Admin, Order, CartItem, Customer
+    ModelKit, Chassis, Series, Admin, 
+    Order, OrderItem, CartItem, Customer
 };
