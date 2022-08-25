@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
                                             "series"
                                         ]
                                     });
-    console.log("test")
+    console.log("Main model kit list")
     console.log(model_kit.toJSON())
     
     res.render('model-kit/index', {
@@ -56,6 +56,52 @@ router.post('/create', async (req, res) => {
             console.log(form)
         }
     })
+})
+
+router.get('/:id/delete', async(req,res)=>{
+    console.log("deletion process")
+    let model_kit_all = await ModelKit.collection()
+                                    .fetch({
+                                        withRelated: [
+                                            "chassis",
+                                            "series"
+                                        ]
+                                    });
+    let model_kit = await ModelKit.where({
+        "id":req.params.id
+    })
+    .fetch({
+        require: true,
+        withRelated: [
+            "chassis",
+            "series"
+        ]
+    });
+
+    res.render("model-kit/delete", {
+        "model_kit": model_kit.toJSON(),
+        "model_kit_all": model_kit_all.toJSON()
+    })
+
+
+    console.log("product to delete:\n", model_kit.toJSON())
+})
+
+router.post('/:id/delete', async (req,res) => {
+    console.log("deleting")
+    let model_kit = await ModelKit.where({
+        "id":req.params.id
+    })
+    .fetch({
+        require: true,
+        withRelated: [
+            "chassis",
+            "series"
+        ]
+    });
+
+    await model_kit.destroy()
+    res.redirect("/model-kit")
 })
 
 module.exports = router;

@@ -78,11 +78,13 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-danger" 
-                                data-bs-target="#deleteModal-{{this.id}}" 
-                                data-bs-toggle="modal">
+                                <a  href="/model-kit/{{this.id}}/delete"
+                                    class="btn btn-danger" 
+                                    {{!-- data-bs-target="#deleteModal-{{this.id}}" 
+                                    data-bs-toggle="modal" --}}
+                                    >
                                     Delete
-                                </button>
+                                </a>
                                 <button type="button" 
                                 class="btn btn-warning" 
                                 data-bs-dismiss="modal">
@@ -119,16 +121,20 @@
                             Are you sure to delete this entry?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" 
-                                class="btn btn-danger" 
-                                data-bs-dismiss="modal">
-                                    Yes
-                                </button>
-                                <button type="button" 
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal">
-                                    No
-                                </button>
+                            <form method="POST">
+                                <input  type="submit"
+                                    type="button" 
+                                    class="btn btn-danger" 
+                                    data-bs-dismiss="modal"
+                                    value="Yes"
+                                />
+                                <a  href="/model-kit" 
+                                    type="button" 
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal">
+                                        No
+                                </a>
+                            </form>
                         </div>
                         </div>
                     </div>
