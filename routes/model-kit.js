@@ -12,6 +12,8 @@ router.get('/', async (req, res) => {
                                             "series"
                                         ]
                                     });
+    console.log("Raw code")
+    console.log(model_kit)
     console.log("Main model kit list")
     console.log(model_kit.toJSON())
     
