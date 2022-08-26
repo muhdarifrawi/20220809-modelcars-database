@@ -5,8 +5,8 @@ const ModelKit = bookshelf.model("model_kit", {
     parse(response){
         if(response.model_kit_price){
             response.model_kit_price = response.model_kit_price.toFixed(2)
-            return response
         }
+        return response
     },
     chassis() {
         return this.belongsTo(Chassis)
