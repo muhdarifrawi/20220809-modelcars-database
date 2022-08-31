@@ -30,7 +30,7 @@ const createModelKitForm = (chassis, series) => {
             errorAfterField: true,
             widget: widgets.text(),
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             }
         }),
         'model_kit_width': fields.string({
@@ -38,7 +38,7 @@ const createModelKitForm = (chassis, series) => {
             errorAfterField: true,
             widget: widgets.text(),
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             }
         }),
         'model_kit_length': fields.string({
@@ -46,7 +46,7 @@ const createModelKitForm = (chassis, series) => {
             errorAfterField: true,
             widget: widgets.text(),
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             }
         }),
         'model_kit_height': fields.string({
@@ -54,7 +54,7 @@ const createModelKitForm = (chassis, series) => {
             errorAfterField: true,
             widget: widgets.text(),
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             }
         }),
         'model_kit_price': fields.string({
@@ -62,7 +62,7 @@ const createModelKitForm = (chassis, series) => {
             errorAfterField: true,
             widget: widgets.text(),
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             }
         }),
         'model_kit_image': fields.string({
@@ -75,7 +75,7 @@ const createModelKitForm = (chassis, series) => {
             errorAfterField: true,
             widget: widgets.textarea(),
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             }
         }),
         'chassis_id': fields.string({
@@ -83,17 +83,17 @@ const createModelKitForm = (chassis, series) => {
             required: true,
             errorAfterField: true,
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             },
             widget: widgets.select(),
             choices: chassis
         }),
         'series_id': fields.string({
-            label:'Series',
+            label: 'Series',
             required: true,
             errorAfterField: true,
             cssClasses: {
-                label: ['form-label']
+                label: ['form-label', 'mt-1']
             },
             widget: widgets.select(),
             choices: series

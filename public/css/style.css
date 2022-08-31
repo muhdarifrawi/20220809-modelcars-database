@@ -1,3 +1,7 @@
 .thumbnail-size{
     height: 50vh;
 }
+
+#uploaded_image{
+    height:20vh;
+}

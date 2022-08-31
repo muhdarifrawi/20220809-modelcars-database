@@ -7,13 +7,22 @@ Create New
 {{#block 'content'}}
 <div class="container">
     <h1>Create New Product</h1>
-    <form method="POST">
+    <form method="POST" class="my-3">
         {{{form}}}
         <div>
-            <a href="#" class="btn btn-primary" id="upload_widget">Upload</a>
-            <img src="" style="display:none" id="uploaded_image"/>
+            <label for="upload_widget" class="form-label mt-1">
+                Image Upload
+            </label><br/>
+            <a href="#" class="btn btn-secondary" id="upload_widget">
+                Upload an image
+            </a>
+            <img src="" style="display:none" id="uploaded_image"
+            class="thumbnail-size my-3"/>
         </div>
-        <input type="submit" value="Add Product" class="btn btn-primary" />
+        <div class="d-flex flex-row-reverse">
+            <input type="submit" value="Add Product" 
+            class="btn btn-primary my-3" />
+        </div>
     </form>
 </div>
 {{/block}}
