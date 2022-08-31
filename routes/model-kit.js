@@ -33,7 +33,10 @@ router.get("/create", async (req, res) => {
 
     const modelKitForm = createModelKitForm(allChassis, allSeries);
     res.render('model-kit/create', {
-        'form': modelKitForm.toHTML(bootstrapField)
+        'form': modelKitForm.toHTML(bootstrapField),
+        cloudinaryName: process.env.CLOUDINARY_NAME,
+        cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
+        cloudinaryPreset: process.env.CLOUDINARY_UPLOAD_PRESET
     })
 })
 

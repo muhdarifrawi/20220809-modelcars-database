@@ -64,9 +64,15 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body d-flex align-items-center">
-                                <img src="/images/image.png" 
+                                {{#if this.model_kit_image}}
+                                    <img src={{this.model_kit_image}} 
                                     class="thumbnail-size" 
                                     alt="">
+                                {{else}}
+                                    <img src="/images/image.png" 
+                                    class="thumbnail-size" 
+                                    alt="">
+                                {{/if}}
                                 <div class="mx-3">
                                     <p>Price: ${{this.model_kit_price}}</p>
                                     <p>Quantity in stock: 

@@ -25,11 +25,13 @@ app.use(
 
 // import routes
 const landingRoutes = require('./routes/landing');
-const modelKitRoutes = require('./routes/model-kit')
+const modelKitRoutes = require('./routes/model-kit');
+const cloudinaryRoutes = require('./routes/cloudinary');
 
 async function main() {
-    app.use("/", landingRoutes)
-    app.use('/model-kit', modelKitRoutes);
+    app.use("/", landingRoutes);
+    app.use("/model-kit", modelKitRoutes);
+    app.use("/cloudinary",cloudinaryRoutes);
 }
 
 main();

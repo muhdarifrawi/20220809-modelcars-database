@@ -68,10 +68,7 @@ const createModelKitForm = (chassis, series) => {
         'model_kit_image': fields.string({
             required: false,
             errorAfterField: true,
-            widget: widgets.text(),
-            cssClasses: {
-                label: ['form-label']
-            }
+            widget: widgets.hidden()
         }),
         'model_kit_description': fields.string({
             required: true,
