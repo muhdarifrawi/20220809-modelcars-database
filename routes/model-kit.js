@@ -109,4 +109,51 @@ router.post('/:id/delete', async (req,res) => {
     res.redirect("/model-kit")
 })
 
+router.get('/:id/edit', async (req,res) => {
+    console.log("editing process")
+    let model_kit = await ModelKit.where({
+        "id":req.params.id
+    })
+    .fetch({
+        require: true,
+        withRelated: [
+            "chassis",
+            "series"
+        ]
+    });
+
+    const allChassis = await Chassis.fetchAll().map((chassis) => {
+        return [chassis.get('id'), chassis.get('chassis_name')];
+    })
+
+    const allSeries = await Series.fetchAll().map((series) => {
+        return [series.get('id'), series.get('series_name')];
+    })
+
+    const modelKitForm = createModelKitForm(allChassis, allSeries);
+
+    for(each in model_kit.attributes){
+        console.log(each)
+        if(each != "id"){
+            console.log("done: ",each)
+            console.log(model_kit.get(each))
+            let modelKitValue
+            if(model_kit.get(each) === null){
+                modelKitValue = 0
+            }
+            else{
+                modelKitValue = model_kit.get(each)
+            }
+            modelKitForm.fields[each].value = modelKitValue
+        }
+    }
+
+    res.render('model-kit/edit', {
+        'form': modelKitForm.toHTML(bootstrapField),
+        cloudinaryName: process.env.CLOUDINARY_NAME,
+        cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
+        cloudinaryPreset: process.env.CLOUDINARY_UPLOAD_PRESET
+    })
+})
+
 module.exports = router;

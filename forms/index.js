@@ -98,11 +98,15 @@ const createModelKitForm = (chassis, series) => {
             widget: widgets.select(),
             choices: series
         }),
-        // 'admin_id': fields.string({
-        //     required: true,
-        //     widget: widgets.hidden(),
-        //     value: 1
-        // })
+        'model_kit_quantity': fields.string({
+            required: true,
+            errorAfterField: true,
+            widget: widgets.text(),
+            cssClasses: {
+                label: ['form-label', 'mt-1']
+            },
+            value: 0
+        })
 
 
     })
