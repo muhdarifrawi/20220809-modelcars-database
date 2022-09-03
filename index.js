@@ -26,7 +26,7 @@ app.use(function (err, req, res, next) {
     }
 });
 
-app.use(function(req,res,next){
+app.use(function (req, res, next) {
     res.locals.csrfToken = req.csrfToken;
     next();
 })
@@ -53,7 +53,7 @@ const cloudinaryRoutes = require('./routes/cloudinary');
 async function main() {
     app.use("/", landingRoutes);
     app.use("/model-kit", modelKitRoutes);
-    app.use("/cloudinary",cloudinaryRoutes);
+    app.use("/cloudinary", cloudinaryRoutes);
 }
 
 main();
