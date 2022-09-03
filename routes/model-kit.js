@@ -187,7 +187,7 @@ router.post('/:id/edit', async (req, res) => {
     modelKitForm.handle(req, {
         'success': async (form) => {
             model_kit.set(form.data);
-            model_kit.save();
+            await model_kit.save();
             res.redirect('/model-kit');
         },
         'error': async (form) => {
